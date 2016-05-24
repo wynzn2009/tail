@@ -35,8 +35,8 @@ public class ReadList {
 			+ "|aung|ouei|oang|uang"
 			+ "|arn|aen|ein|eng|uan|ian|ien|iaw|iew|aeo|aew|ieo|eow|oea|oun|oon|aun|uon|ong|ung|oei|uai|uay"
 			+ "|uei|uag|wai|wae|ang|ing|uan|oan"
-			+ "|aa|ag|ah|ar|ai|ay|ea|ei|ae|ey|eg|ao|au|aw|ow|an|al|en|ia|ie|ya|ee|in|il|iu|yu|eo|ew|er"
-			+ "|on|ul|oo|oi|oy|ui" + "|i|o";
+			+ "|aa|ag|ah|ar|ai|ay|ea|ei|ae|ey|eg|ao|au|aw|ow|an|al|en|ia|ie|ee|in|il|iu|yu|eo|ew|er"
+			+ "|on|ul|oo|oi|oy|ui" + "|i";
 	private final static String TAIL = "kh|hk|dh|ch|bh|ph|pf|p|s|j|b|g|k|d|t";
 	private final static String BWORD = "ag,ah,ar,ay,ey,eg,an,arn,al,aen,aeng,ein,en,eng,oeang,uan,aw,ow,iew"
 			+ ",iaw,ew,aew,eow,uang,ian,ien,iang,ieng,in,il,on,oon,oean,aun,waen,ul,ong,oung,unguong,aung,un"
@@ -132,7 +132,7 @@ public class ReadList {
 		}
 
 		Sheet exception = twb.getSheetAt(1);
-		for (int i = 1; i < exception.getLastRowNum(); i++) {
+		for (int i = 1; i < exception.getLastRowNum() + 1; i++) {
 			Row row = exception.getRow(i);
 			mapw.put(row.getCell(0).getStringCellValue(), row.getCell(1)
 					.getStringCellValue());
@@ -269,10 +269,16 @@ public class ReadList {
 		while (m.find()) {
 			// int end = m.end();
 			// Matcher mt = pt.matcher(sb.toString());
-
-			list.add(sb.substring(0, m.end() - start));
-			sb.delete(0, m.end() - start);
-			start = m.end();
+			if (set.contains(m.group()) && str.length() > m.end()
+					&& "aeiou".contains(String.valueOf(str.charAt(m.end())))) {
+				list.add(sb.substring(0, m.end() - start - 1));
+				sb.delete(0, m.end() - start - 1);
+				start = m.end() - 1;
+			} else {
+				list.add(sb.substring(0, m.end() - start));
+				sb.delete(0, m.end() - start);
+				start = m.end();
+			}
 		}
 		if (sb.length() > 0) {
 			// Pattern pt = Pattern.compile(TAIL);
@@ -291,7 +297,7 @@ public class ReadList {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		WordBean test = new WordBean("Phikun", "农索巴杜");
+		WordBean test = new WordBean("Khwan", "农索巴杜");
 		readFile();
 		getMap();
 		translate(test);
