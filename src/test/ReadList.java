@@ -26,21 +26,21 @@ public class ReadList {
 	private static Workbook twb = null;
 	private static Sheet tsheet = null;
 	private final static String AWORD = "oeang|aeng|earn|erng|eung|uang|iang|ieng|oean|waen|wian|oung|uong"
-			+ "|aung|ouei|oang|uang"
+			+ "|aung|ouei|oang|uang|oeng"
 			+ "|arn|aen|ein|eng|uan|ian|ien|iaw|iew|aeo|aew|ieo|eow|oea|oun|oon|aun|uon|ong|ung|oei|uai|uay"
-			+ "|uei|uag|wai|wae|ang|ing|uan|oan"
+			+ "|uei|uag|wai|wae|ang|ing|uan|oan|uea|oen"
 			+ "|aa|ag|ah|ar|ai|ay|ea|ei|ae|ey|eg|ao|au|aw|ow|an|al|en|ia|ie|ya|ee|in|il|iu|yu|eo|ew|oe|er|ua"
-			+ "|wa|on|ul|oo|oi|oy|ui|un" + "|a|e|i|o|u";
+			+ "|wa|on|ul|oo|oi|oy|ui|un|ue" + "|a|e|i|o|u";
 	private final static String EWORD = "oeang|aeng|earn|erng|eung|uang|iang|ieng|oean|waen|wian|oung|uong"
-			+ "|aung|ouei|oang|uang"
+			+ "|aung|ouei|oang|uang|oeng"
 			+ "|arn|aen|ein|eng|uan|ian|ien|iaw|iew|aeo|aew|ieo|eow|oea|oun|oon|aun|uon|ong|ung|oei|uai|uay"
-			+ "|uei|uag|wai|wae|ang|ing|uan|oan"
+			+ "|uei|uag|wai|wae|ang|ing|uan|oan|uea|oen"
 			+ "|aa|ag|ah|ar|ai|ay|ea|ei|ae|ey|eg|ao|au|aw|ow|an|al|en|ia|ie|ee|in|il|iu|yu|eo|ew|er"
 			+ "|on|ul|oo|oi|oy|ui" + "|i";
 	private final static String TAIL = "kh|hk|dh|ch|bh|ph|pf|p|s|j|b|g|k|d|t";
 	private final static String BWORD = "ag,ah,ar,ay,ey,eg,an,arn,al,aen,aeng,ein,en,eng,oeang,uan,aw,ow,iew"
-			+ ",iaw,ew,aew,eow,uang,ian,ien,iang,ieng,in,il,on,oon,oean,aun,waen,ul,ong,oung,unguong,aung,un"
-			+ ",oy,oay,wag,oang,ing,oan";
+			+ ",iaw,ew,aew,eow,uang,ian,ien,iang,ieng,in,il,on,oon,oean,aun,waen,ul,ong,oung,ung,uong,aung,un"
+			+ ",oy,oay,wag,oang,ing,oan,oeng";
 	private final static Set<String> set = new TreeSet<String>();
 	// private final static String CWORD =
 	// "kh|hk|dh|ch|bh|ph|pf|p|s|j|b|g|k|d|t";
@@ -297,7 +297,7 @@ public class ReadList {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		WordBean test = new WordBean("Khwan", "农索巴杜");
+		WordBean test = new WordBean("khloeng", "农索巴杜");
 		readFile();
 		getMap();
 		translate(test);

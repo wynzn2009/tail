@@ -29,7 +29,7 @@ public class AppTest {
 		InputStream inp = null;
 		try {
 //			inp = new FileInputStream("E:\\project\\tai\\50.xlsx");
-			inp = new FileInputStream("E:\\project\\tai\\50.xlsx");
+			inp = new FileInputStream("E:\\project\\tai\\70.xlsx");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -78,7 +78,7 @@ public class AppTest {
 		for (int i = 0; i < testList.size(); i++) {
 			WordBean bean = testList.get(i);
 			String result = ReadList.translate(bean);
-			System.out.println(i+","+bean.getValue() + "," + result + ","
+			System.out.println((i+2)+","+bean.getValue() + "," + result + ","
 					+ result.equals(bean.getCword()));
 			Row row = tsheet.getRow(i+1);
 			Cell cell = row.createCell(2);
@@ -90,9 +90,9 @@ public class AppTest {
 			}
 		}
 		try {
-			FileOutputStream fileOut = new FileOutputStream("E:\\project\\tai\\50.xlsx");
+			FileOutputStream fileOut = new FileOutputStream("E:\\project\\tai\\70.xlsx");
 			twb.write(fileOut);
-//			fileOut.close();
+			fileOut.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
